@@ -1,0 +1,65 @@
+
+class Person {
+    
+    //Extra credit: Add more variables and set up the initializer and function to reflect the new input variables
+    let name: String
+    let age: Int
+    let hometown: String
+    
+    init(inputName: String, inputAge: Int, inputTown: String) {
+        self.name = inputName
+        self.age = inputAge
+        self.hometown = inputTown
+    }
+    
+    //Homework: Make this print out a readable statement.
+    func greeting(){
+        print(name + "\(age)" + hometown)
+    }
+}
+
+let wylanPerson = Person(inputName: "Wylan", inputAge: 30, inputTown: "San Clemente")
+let ircnPerson = Person(inputName: "Airseon", inputAge: 29, inputTown: "New York")
+
+wylanPerson.greeting()
+ircnPerson.greeting()
+
+    
+let firstName: String = "Wylan"
+let lastName: String = "Neely"
+    
+    
+let country = "United States"
+let state = "California"
+    
+var age: Int = 30
+    
+let isStudent: Bool = false
+    
+
+
+func greeting(){
+    
+    let greetingString = "Hello my name is \(firstName) \(lastName), and I live in \(state), \(country). I am \(age) years old."
+    
+    print(greetingString)
+}
+
+func inputVariableGreeting(city:String){
+    let newGreeting = "Hi I am " + firstName + " " + lastName + ". I live in " + city + "."
+    print(newGreeting)
+}
+
+func inputVariableWithReturnVariableGreeting(city:String)-> String {
+    
+    let greetingString = "Hello my name is \(firstName) \(lastName), and I live in \(city), \(state), \(country). I am \(age) years old."
+    
+    return greetingString
+}
+
+//greeting()
+//inputVariableGreeting(city: "Fountain Valley")
+
+let cityGreeting = inputVariableWithReturnVariableGreeting(city: "Fountain Valley")
+print(cityGreeting)
+
