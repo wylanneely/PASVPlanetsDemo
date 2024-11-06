@@ -1,0 +1,122 @@
+
+
+class Vehicle {
+    
+    let color: String // let is a constant variable, meaning it cannot change
+    let topSpeed: Int
+    var currentSpeed: Int? // ? means optional, that means that the current value can exist or be set to nil
+    //var is a regular variable which can be changed
+    
+    init(color: String, topSpeed: Int, currentSpeed: Int?) {
+        self.color = color
+        self.topSpeed = topSpeed
+        self.currentSpeed = currentSpeed
+    }
+    
+    func describe() {
+        print("This vehicle is \(color) and can travel up to \(topSpeed)")
+    }
+}
+
+class Car: Vehicle {
+    
+    var isConvertibleTop: Bool
+    
+    init(isConvertibleTop: Bool,color: String,topSpeed: Int,currentSpeed: Int) {
+        self.isConvertibleTop = isConvertibleTop
+        //We are calling the super init from the superClass which is Vehicle
+        super.init(color: color, topSpeed: topSpeed, currentSpeed: currentSpeed)
+    }
+    
+    override func describe() {
+        super.describe()
+        print("This car is \(isConvertibleTop) a convertible")
+    }
+    
+}
+
+let lamborghini = Car(isConvertibleTop: false, color: "Red", topSpeed: 240, currentSpeed: 110)
+let convertiblePorshe = Car(isConvertibleTop: true, color: "Blue", topSpeed: 160, currentSpeed: 88)
+
+//lamborghini.describe()
+//convertiblePorshe.describe()
+
+
+class Motorcycle: Vehicle {
+    
+    private var has3Wheels: Bool
+    
+    init(has3Wheels: Bool,color: String,topSpeed: Int) {
+        self.has3Wheels = has3Wheels
+        super.init(color: color, topSpeed: topSpeed,currentSpeed: nil)
+    }
+    
+    func printDoesHaveThreeWheels(){
+        print("Does it have three wheels: \(has3Wheels)")
+    }
+    
+}
+
+let hondaMotorcycle = Motorcycle(has3Wheels: false, color: "White", topSpeed: 140)
+let ATV = Motorcycle(has3Wheels: true, color: "Green", topSpeed: 160)
+
+//hondaMotorcycle.printDoesHaveThreeWheels()
+//hondaMotorcycle.describe()
+//
+//ATV.printDoesHaveThreeWheels()
+//ATV.describe()
+
+class Truck: Vehicle {
+    
+    
+    var cargoSize: Int
+    var isFourDoor: Bool?
+    
+    init(cargoSize: Int,
+         topSpeed: Int,
+         color: String,
+         isFourDoor: Bool?) {
+        self.cargoSize = cargoSize
+        if cargoSize > 10 {
+            self.isFourDoor = false
+        } else {
+            self.isFourDoor = isFourDoor
+        }
+        super.init(color: color, topSpeed: topSpeed, currentSpeed: nil)
+        
+    }
+    
+    func unwrapOptionalIsFourDoor(){
+        //Way 1 to unwrap optional
+        guard let unwappedVariable = isFourDoor else {
+            print("Optional was nil value found,exiting function")
+            //this happens when optional value is nil
+            return
+        }
+        print("Does truck have fourdoors: \(unwappedVariable)")
+    }
+    
+    func unwrapOptionalIsFourDoor2(){
+        if let unwarappedOptional = isFourDoor {
+            print("Does truck have fourdoors: \(unwarappedOptional)")
+        }
+        else {
+            print("Optional was nil value found,exiting function")
+            return
+        }
+        
+    }
+    
+    
+    
+}
+
+let Ram = Truck(cargoSize: 9, topSpeed: 150, color: "Blue", isFourDoor: true)
+let Dodge = Truck(cargoSize: 12, topSpeed: 140, color: "Black", isFourDoor: nil)
+
+//Ram.unwrapOptionalIsFourDoor()
+//Ram.unwrapOptionalIsFourDoor2()
+
+
+//HomeWork: Create an Animal class, create at least 2 subclasses of Animal, with one description func
+//extra credit: 3 subclassed Animal, and have an optional unwrapped safely
