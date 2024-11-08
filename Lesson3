@@ -1,4 +1,47 @@
-//: A UIKit based Playground for presenting user interface
+//MARK: - Part 1 of Lesson: Structs
+
+struct AnimalStruct {
+    var species: String
+    var name: String
+    var age: Int
+}
+
+let dog = AnimalStruct(species: "Dog", name: "Sally", age: 5) //One instance in memory
+let cat = AnimalStruct(species: "Cat", name: "KittyCat", age: 8) // another instance in memory
+
+
+class AnimalClass {
+    var species: String? = "Snakes"
+    var name: String? = "Ruufus"
+    var age: Int? = 0
+}
+
+var snake = AnimalClass()
+snake.species
+
+
+
+class Reptile: AnimalClass {
+    var hasSkales: Bool = true
+    var laysEggs: Bool?
+    var lastName: String?  // If you set a default value or optional to a value, initializer is not needed
+    
+    init(hasSkales: Bool, laysEggs: Bool? = nil) {
+        self.hasSkales = hasSkales
+        self.laysEggs = laysEggs
+    }
+    
+    func setName(lastName: String){
+        self.lastName = lastName
+    }
+}
+
+var AndacandaJoe = Reptile(hasSkales: true, laysEggs: true)
+
+
+
+
+//MARK: - Part 2 of Lesson: Views
   
 import UIKit
 import PlaygroundSupport
