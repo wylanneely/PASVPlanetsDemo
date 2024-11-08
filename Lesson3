@@ -1,1 +1,52 @@
+//: A UIKit based Playground for presenting user interface
+  
+import UIKit
+import PlaygroundSupport
+
+class MyViewController : UIViewController {
+    
+    var myBackgroundColor: UIColor? = UIColor.blue
+    var myTextColor: UIColor? = UIColor.white
+    var myName: String = "Wylan L. Neely"
+    
+    let myFavoriteAnimal = FavoriteAnimal(name: "Lion", hasLegs: true, soundItMakes: "ROOOR")
+    
+    override func loadView() {
+        let view = UIView()
+        view.backgroundColor = myBackgroundColor
+        let label = UILabel()
+        label.frame = CGRect(x: 150, y: 200, width: 200, height: 20)
+        label.text = myFavoriteAnimal.senteceExplainingAnimal()
+        label.textColor = myTextColor
+        view.addSubview(label)
+        self.view = view
+    }
+    
+}
+
+class FavoriteAnimal {
+   private var name: String
+   private var hasLegs: Bool
+   private var soundItMakes: String
+    
+    init(name: String, hasLegs: Bool, soundItMakes: String) {
+        self.name = name
+        self.hasLegs = hasLegs
+        self.soundItMakes = soundItMakes
+    }
+    
+    func displayName()-> String {
+        self.name
+    }
+    
+    fileprivate func senteceExplainingAnimal()->String{
+        return "My Favotite animal is \(name) and it makes this \(soundItMakes)"
+    }
+    
+}
+
+//Homework: Mess around with this and make something cool, have fun be creative
+
+// Present the view controller in the Live View window
+PlaygroundPage.current.liveView = MyViewController()
 
