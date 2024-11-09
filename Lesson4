@@ -1,0 +1,50 @@
+
+import UIKit
+
+class HomeViewController: UIViewController {
+
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    
+    func editDisplayLabel(){
+        displayLabel.text = "Howdy!"
+        displayLabel.textColor = UIColor.green
+    }
+    func editDisplayLabel2(){
+       
+        //fill this out
+    }
+    
+    func editDisplayLabel3(){
+      //fill this out
+    }
+ 
+
+    //MARK: Outlets
+    
+    @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet weak var editLabelButton: UIButton!
+        
+    //MARK: Actions
+    
+    @IBAction func editLabelButtonTapped(_ sender: Any) {
+        editDisplayLabel()
+    }
+
+    @IBAction func button2Tapped(_ sender: Any) {
+        //fill out the button logic here
+    }
+    
+    
+    @IBAction func button3Tapped(_ sender: Any) {
+        //fill out the button logic here
+        //extracredit: edit the editLabelButtonOUtlets text or tint color using set title () function
+    }
+    
+}
+
