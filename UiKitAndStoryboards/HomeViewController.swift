@@ -63,13 +63,26 @@ class HomeViewController: UIViewController {
         editDisplayLabelAndButtonTitle()
     }
     
+    @IBAction func segue2ButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "toLabelVC2", sender: self)
+    }
+    
     override func prepare(
         for segue: UIStoryboardSegue,
         sender: Any?
     ) {
         if segue.identifier == "toLabelVC",
            let destinationVC = segue.destination as? LabelViewController {
+            //changebackgroundCOlor
             destinationVC.labelString = textField.text
+        }
+        
+        if segue.identifier == "toLabelVC2" {
+            
+            if let destinationVC = segue.destination as? LabelViewController {
+                //changedLabelColor
+                destinationVC.labelString = textField.text
+            }
         }
     }
 }
