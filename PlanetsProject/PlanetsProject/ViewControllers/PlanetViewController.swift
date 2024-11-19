@@ -17,25 +17,22 @@ class PlanetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let planetName = planetModel?.name {
-            planetNameLabel.text = planetName
-        }
-        
-        if let planetImage = planetModel?.image {
-            planetImageView.image = planetImage
-        }
-        
-        if let planetRandomFact = planetModel?.randomFact {
-            planetRandomFactTextView.text = planetRandomFact
-        }
-        
-        if let planetDistanceFromSun = planetModel?.distanceFromSun {
-            distanceTextView.text = planetDistanceFromSun.description
-        }
-
+        loadPlanetData()
     }
  
+    
+    
+    
+    //MARK: Load
+    
+    private func loadPlanetData(){
+        if let planet = planetModel {
+            planetNameLabel.text = planet.name
+            planetImageView.image = planet.image
+            planetRandomFactTextView.text = planet.randomFact
+            distanceTextView.text = "Distance from sun \(planet.distanceFromSun)(AU)./n Size relative to Earth \(planet.sizeComparedToEarth)"
+        }
+    }
 
     //MARK: - Outlets
     

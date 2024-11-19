@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    let planetsController = PlanetsController()
+  let planetsController = PlanetsController()
     
     //MARK: App Lifecycle
     
