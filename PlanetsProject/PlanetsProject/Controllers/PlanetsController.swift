@@ -10,7 +10,7 @@ import UIKit
 
 class PlanetsController {
     
-    static var shared = PlanetsController()
+    static let shared = PlanetsController()
     
     //MARK: - Create
     

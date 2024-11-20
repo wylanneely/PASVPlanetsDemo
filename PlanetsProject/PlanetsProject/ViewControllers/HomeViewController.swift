@@ -9,7 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-  let planetsController = PlanetsController()
+    let planetsController = PlanetsController()
+    
+    var planetModel: PlanetModel?
+
     
     //MARK: App Lifecycle
     
@@ -22,7 +25,45 @@ class HomeViewController: UIViewController {
     //MARK: Outlets
 
     @IBOutlet weak var planetNameTextField: UITextField!
+        
+    //MARK: Actions
+     
+    @IBAction func explorePlanetButtonTapped(_ sender: Any) {
+        //explain
+        if let planetText = planetNameTextField.text {
+            
+            if let planet = planetsController.getPlanet(byName: planetText) {
+                self.planetModel = planet
+                self.performSegue(withIdentifier: "toPlanetVC", sender: self)
+            } else {
+                displayAlertController()
+            }
+            
+        }
+        
+    }
     
+    
+    
+    //MARK: Alert (UIAlertController)
+    
+    private func displayAlertController(){
+        
+        let alertController = UIAlertController(
+                   title: "Error Spelling Planet!",
+                   message: "Please fix the spelling of the planet",
+                   preferredStyle: .alert
+               )
+               
+               
+        let defaultAction = UIAlertAction(title: "OK", style: .default) { _ in
+                   print("OK button tapped")
+               }
+        
+        alertController.addAction(defaultAction)
+             
+        self.present(alertController, animated: true)
+    }
     
     
     
@@ -32,16 +73,8 @@ class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPlanetVC" {
             if let planetVC = segue.destination as? PlanetViewController {
-                
-                if let planetName = planetNameTextField.text {
-            
-                    let planet = planetsController.getPlanet(byName: planetName)
-                    planetVC.planetModel = planet
-                }
-
+                planetVC.planetModel = self.planetModel
             }
-            
-            
             
         }
     }
